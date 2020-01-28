@@ -1,10 +1,10 @@
 export function findSimilarString(options: string[], stringToMatch: string): string[] {
-  if (options.length === 0 || !stringToMatch) return []
+	if (options.length === 0) return []
 
-  return options.filter(option =>
-    option
-      .trim()
-      .toLocaleLowerCase()
-      .includes(stringToMatch.trim().toLocaleLowerCase())
-  )
+	return options.filter(option =>
+		option
+			.trim()
+			.toLowerCase()
+			.includes(stringToMatch.trim().toLowerCase())
+	)
 }
