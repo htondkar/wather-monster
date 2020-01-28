@@ -1,7 +1,12 @@
-import { AppState } from 'App';
-import { IWeatherAPI } from 'network/interfaces';
-import { Action } from 'redux';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+import { AppState } from 'App'
+import { IWeatherAPI } from 'network/interfaces'
+import { ThunkAction, ThunkDispatch } from 'redux-thunk'
 
-export type DispatchWithThunk<A extends Action> = ThunkDispatch<AppState, IWeatherAPI, A>
-export type ThunkResult<A extends Action> = ThunkAction<void, AppState, IWeatherAPI, A>
+export type DispatchWithThunk<A extends Action<string>> = ThunkDispatch<AppState, IWeatherAPI, A>
+export type ThunkResult<A extends Action<string>> = ThunkAction<void, AppState, IWeatherAPI, A>
+
+export interface Action<T extends string, Payload = any> {
+	type: T
+	payload: Payload
+	error: boolean
+}

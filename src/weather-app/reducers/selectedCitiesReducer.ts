@@ -1,5 +1,5 @@
 import { WeatherReport, WeatherReportsState } from 'App'
-import { Action } from 'store/types'
+import { Action } from 'weather-app/types'
 
 // ────────────────────────────────────────────────────────────────────────────────
 
