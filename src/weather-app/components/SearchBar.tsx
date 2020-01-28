@@ -1,10 +1,10 @@
-import React, { useMemo, useState, useCallback } from 'react'
-import styled from 'styled-components'
+import React, { useCallback, useMemo, useState } from 'react';
+import styled from 'styled-components';
+import { ClickOutside } from 'weather-app/components/ClickOutside';
 
-import { Input } from '@material-ui/core'
+import { Input } from '@material-ui/core';
 
-import { findSimilarString } from './utils'
-import { ClickOutside } from 'weather-app/components/ClickOutside'
+import { findSimilarString } from './utils';
 
 interface Props {
 	onSearch(value: string): void
@@ -40,7 +40,7 @@ export const SearchBar: React.FunctionComponent<Props> = function(props) {
 				></Input>
 
 				{isSuggestionsOpen && (
-					<Suggestions>
+					<Suggestions data-testid="suggestions">
 						{similarCities.map((city, index) => (
 							<CityRow
 								key={`${index}-${city}`}

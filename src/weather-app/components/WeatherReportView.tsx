@@ -14,7 +14,7 @@ export const WeatherReportView: React.FunctionComponent<Props> = function(props)
   return (
     <Wrapper>
       {props.reports.map(([cityName, weather]) => (
-        <Card key={cityName}>
+        <Card key={cityName} data-testid="weather-report-card">
           <CardHeader
             action={
               <IconButton aria-label="remove" onClick={() => props.onRemove(cityName)}>

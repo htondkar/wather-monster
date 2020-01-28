@@ -1,4 +1,4 @@
-import { Action, applyMiddleware, combineReducers, createStore, Reducer } from 'redux';
+import { Action, applyMiddleware, combineReducers, createStore, Reducer, Store } from 'redux';
 import logger from 'redux-logger';
 import thunk, { ThunkAction } from 'redux-thunk';
 
@@ -21,12 +21,14 @@ export function createReduxStore(
   initialState: AppState = defaultInitialState,
   rootReducer: Reducer<any> = defaultRootReducer,
   api: IWeatherAPI = defaultApi
-) {
-  return createStore(
-    rootReducer,
-    initialState,
-    applyMiddleware(thunk.withExtraArgument(api), logger)
-  )
+): Store<AppState> {
+  const middleware = [thunk.withExtraArgument(api)]
+
+  if (process.env.NODE_ENV === 'development') {
+    middleware.push(logger)
+  }
+
+  return createStore(rootReducer, initialState, applyMiddleware(...middleware))
 }
 
 // ────────────────────────────────────────────────────────────────────────────────
