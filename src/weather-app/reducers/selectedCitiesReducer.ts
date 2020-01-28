@@ -1,9 +1,8 @@
-import { WeatherReport, WeatherReportsState } from 'App'
-import { Action } from 'weather-app/types'
+import { City, WeatherReport, WeatherReportsState } from 'appContext';
+import { Action } from 'weather-app/types';
 
 // ────────────────────────────────────────────────────────────────────────────────
 
-export type City = string
 type WeatherReportUpdatePayload = { [city: string]: WeatherReport }
 
 // ────────────────────────────────────────────────────────────────────────────────
